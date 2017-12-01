@@ -7,7 +7,7 @@ app = Flask(__name__)
 def require_appkey(view_function):
     @wraps(view_function)
     def decorated_function(*args, **kwargs):
-        if request.headers.get("key") and request.headers.get("key") == "KEY_3BQ4NTGHHO_K6AWCO2E81":
+        if request.headers.get("key") and request.headers.get("key") == "KEY_GOES_HERE":
             return view_function(*args, **kwargs)
         else:
             return abort(401)
