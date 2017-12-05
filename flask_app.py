@@ -1,4 +1,4 @@
-from flask import Flask, request, json, jsonify, abort, render_template
+from flask import Flask, request, json, jsonify, abort, render_template, send_from_directory
 from functools import wraps
 
 app = Flask(__name__)
@@ -26,6 +26,8 @@ def method_file_name(file_name):
     if request.method == "POST":
         try:
             data = request.get_json(silent=True)
+            data = request.data
+            print(data)
             with open(file_name, "w") as f:
                 json.dump(data, f)
             return jsonify({"okay": "passed"})
